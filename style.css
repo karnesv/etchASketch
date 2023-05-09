@@ -1,0 +1,35 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #bbb
+}
+
+.container {
+    display: flex;
+    background-color: #000;
+    width: 480px;
+    height: 480px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    flex-wrap: wrap;
+    gap: 1px;
+}
+.sq {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+}

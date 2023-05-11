@@ -10,7 +10,7 @@ function squares (nums =4) {
         }
     }
     // console.log(nums)
-    let n = (480/nums)-1;
+    let n = (720/nums);
     // console.log(n)
     for (let num = 0; num < (nums * nums); num++){
         let newDiv = document.createElement('div');
@@ -31,52 +31,56 @@ function buttons(i) {
         const newBtn = document.createElement('button');
         btnContainer.appendChild(newBtn);
     }
-    const numSquareButton = document.querySelector('button');
-    numSquareButton.setAttribute('id', 'numSquares')
-    numSquareButton.textContent= '# squares'
-    const colorButton = document.querySelectorAll('button')[1];
+    const colorButton = document.querySelectorAll('button')[0];
     colorButton.setAttribute('id', 'colorButton')
-    const blackButton = document.querySelectorAll('button')[2];
+    const blackButton = document.querySelectorAll('button')[1];
     blackButton.setAttribute('id', 'blackButton')
-    const fourthButton = document.querySelectorAll('button')[3];
-    fourthButton.style.backgroundColor = 'blue';
+    const submitButton = document.querySelectorAll('button')[2];
+
     buttonClickEvent ()
 }
 
 function buttonClickEvent () {
     const btnContainer = document.querySelector('.buttons');
-    const numSquareButton = document.querySelector('#numSquares');
     const colorButton = document.querySelector('#colorButton');
-    const blackButton = document.querySelector('#blackButton');
-    numSquareButton.addEventListener('click', numInput)
-    function numInput(e) {
-        console.log(e.target)
-        let newInputRange = document.createElement('input');
-        let newOutput = document.createElement('input');
-        let newLabel = document.createElement('label');
-        newLabel.classList.add('label');
-        newLabel.textContent= '# 8-99';
-        newOutput.classList.add('input');
-        newInputRange.classList.add('input');
-        newInputRange.setAttribute('type', 'range');
-        newInputRange.setAttribute('value', '24');
-        newInputRange.setAttribute('min', '8');
-        newInputRange.setAttribute('max', '99');
-        newInputRange.setAttribute('type', 'range');
-        numSquareButton.replaceWith(newInputRange);
-        newInputRange.after(newOutput);
-        newInputRange.before(newLabel);
+    const blackButton = document.querySelector('#blackButton'); 
+}
 
-        // let range = document.querySelector("input[type=range]");
-        // let number = document.querySelector('input[type=number]')
-        newInputRange.addEventListener("input",(e)=>{
+function numInput() {
+    const btnContainer = document.querySelector('.buttons');
+    const newInputRange = document.createElement('input');
+    const newOutput = document.createElement('input');
+    const newLabel = document.createElement('label');
+    newLabel.classList.add('label');
+    newLabel.textContent= 'Num of squares 8-99';
+    newOutput.classList.add('input');
+    newOutput.setAttribute('type', 'number');
+    newInputRange.classList.add('input');
+    newInputRange.setAttribute('type', 'range');
+    newInputRange.setAttribute('value', '8');
+    newInputRange.setAttribute('min', '8');
+    newInputRange.setAttribute('max', '99');
+    newOutput.setAttribute('min', '8');
+    newOutput.setAttribute('max', '99');
+    newOutput.setAttribute('value', '8');
+    newInputRange.setAttribute('type', 'range');
+    const newCont = document.createElement('div');
+    newCont.setAttribute('id','#inputContainer');
+    btnContainer.prepend(newCont);
+    newCont.appendChild(newInputRange);
+    newInputRange.after(newOutput);
+    newInputRange.after(newLabel);
+
+    // let range = document.querySelector("input[type=range]");
+    // let number = document.querySelector('input[type=number]')
+    newInputRange.addEventListener("input",(e)=>{
         newOutput.value=e.target.value;
-        })
-        newOutput.addEventListener("input",(e)=>{
+        squares(e.target.value);
+    })
+    newOutput.addEventListener("input",(e)=>{
         newInputRange.value=e.target.value;
-        })
-        
-    }
+        squares(e.target.value);
+    })   
 }
 
 function setupMouseOverEvents() {
@@ -92,7 +96,7 @@ function mouseOverBlack(e) {
 }
 
 window.setTimeout((
-    function(){squares(8), buttons(4)}
+    function(){squares(8), buttons(3), numInput()}
     ), 1000);
 
 
@@ -130,6 +134,7 @@ You should be able to enter 64 and have a brand new 64x64 grid pop up without ch
 Push your project to GitHub!
 
 Extra Credit
-Instead of just changing the color of a square from black to white (for example), have each pass through with the mouse change it to a completely random RGB value. Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
+Instead of just changing the color of a square from black to white (for example), have each pass through with the mouse change it to a completely random RGB value.
+Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
 
 */

@@ -9,15 +9,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:960px;
+    height: 960px;
     background: linear-gradient(cyan, #000079, magenta);
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Secular One', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 6rem;
+    color: #000079;
+    background: radial-gradient(magenta, cyan);
+    border-radius: 16px;
+    letter-spacing: 3rem;
 }
 
 .container {
     display: flex;
     background-color: #333;
-    width: 720px;
-    height: 720px;
+    width: 640px;
+    height: 640px;
     justify-content: center;
     align-items: center;
     border: 2px solid #333;
@@ -34,6 +44,11 @@ body {
     text-align: center;
     aspect-ratio: 1 / 1;
 }
+
+#inputContainer {
+    padding: 8px;
+}
+
 .buttons {
     display: block;
     margin: 0 2rem 2rem;
